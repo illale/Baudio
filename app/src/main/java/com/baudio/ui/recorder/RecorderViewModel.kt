@@ -1,13 +1,13 @@
-package com.baudio.ui.home
+package com.baudio.ui.recorder
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class HomeViewModel : ViewModel() {
+class RecorderViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+        value = "This is recorder Fragment"
     }
     val text: LiveData<String> = _text
 }

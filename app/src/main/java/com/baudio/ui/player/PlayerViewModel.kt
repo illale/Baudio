@@ -1,13 +1,13 @@
-package com.baudio.ui.dashboard
+package com.baudio.ui.player
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class DashboardViewModel : ViewModel() {
+class PlayerViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is dashboard Fragment"
+        value = "This is player Fragment"
     }
     val text: LiveData<String> = _text
 }
