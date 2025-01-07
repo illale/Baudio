@@ -1,35 +1,47 @@
 package com.baudio
 
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
-import com.baudio.databinding.ActivityMainBinding
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import com.baudio.ui.theme.BaudioTheme
 
-class MainActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityMainBinding
-
+class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContent {
+            BaudioTheme {
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    Greeting(
+                        name = "Android",
+                        modifier = Modifier.padding(innerPadding)
+                    )
+                }
+            }
+        }
+    }
+}
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+@Composable
+fun Greeting(name: String, modifier: Modifier = Modifier) {
+    Text(
+        text = "Hello $name!",
+        modifier = modifier
+    )
+}
 
-        val navView: BottomNavigationView = binding.navView
-
-        val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.navigation_player, R.id.navigation_recorder, R.id.navigation_library
-            )
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+@Preview(showBackground = true)
+@Composable
+fun GreetingPreview() {
+    BaudioTheme {
+        Greeting("Android")
     }
 }

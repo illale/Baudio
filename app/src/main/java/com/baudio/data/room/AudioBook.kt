@@ -1,7 +1,11 @@
-package com.baudio.model
+package com.baudio.data.room
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity
 data class AudioBook(
-    val id: String,
+    @PrimaryKey val audioBookId: String,
     val title: String,
     val description: String,
     val textSource: String,
@@ -15,5 +19,5 @@ data class AudioBook(
     val urlOther: String,
     val totalTime: String,
     val totalTimeSecs: Int,
-    val authors: List<Author>
+    val author: String
 )

@@ -1,6 +1,6 @@
 package com.baudio.model
 
-data class Author(
+data class AuthorModel(
     val id: String,
     val firstName: String,
     val lastName: String,
